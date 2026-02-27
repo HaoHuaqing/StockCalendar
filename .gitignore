@@ -1,0 +1,22 @@
+# Python runtime
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual env
+.venv/
+
+# Local runtime/cache data
+data/events_cache.json
+
+# Local user stock watchlist (do not commit)
+stocks.json
+
+# Local env and secrets
+.env
+.env.*
+!.env.example
+
+# OS/editor noise
+.DS_Store

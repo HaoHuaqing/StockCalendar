@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>财报与宏观发布日历</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@500&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="title-wrap">
+          <p class="kicker">Market Calendar Radar</p>
+          <h1>财报与宏观发布日历</h1>
+          <p class="subtitle">
+            覆盖 A 股 / 港股 / 美股，点击事件后在右侧查看详情与来源链接。
+          </p>
+        </div>
+
+        <div class="topbar-actions">
+          <button id="refreshBtn" class="action-btn">立即刷新</button>
+          <div id="statusBadge" class="status-badge">正在加载...</div>
+        </div>
+      </header>
+
+      <section class="toolbar">
+        <div class="chip-group" id="categoryFilters">
+          <button class="chip active" data-kind="all">全部</button>
+          <button class="chip" data-kind="stock">财报</button>
+          <button class="chip" data-kind="macro">宏观</button>
+        </div>
+
+        <div class="chip-group" id="marketFilters">
+          <button class="chip active" data-market="A股">A股</button>
+          <button class="chip active" data-market="港股">港股</button>
+          <button class="chip active" data-market="美股">美股</button>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <div class="calendar-panel">
+          <div id="calendar"></div>
+        </div>
+
+        <aside class="detail-panel">
+          <section id="detailPanel">
+            <h2>事件详情</h2>
+            <p class="detail-empty">点击日历上的事件，查看说明和来源链接。</p>
+          </section>
+        </aside>
+      </section>
+
+      <section class="stock-config-wrap">
+        <section class="stock-panel">
+          <div class="stock-panel-head">
+            <h2>股票配置</h2>
+            <div class="stock-panel-actions">
+              <button id="addStockBtn" class="mini-btn">新增A股</button>
+              <button id="importStocksBtn" class="mini-btn">导入JSON</button>
+              <button id="exportStocksBtn" class="mini-btn">导出JSON</button>
+              <input
+                id="importStocksInput"
+                type="file"
+                accept="application/json,.json"
+                hidden
+              />
+            </div>
+          </div>
+          <div id="stockTabs" class="stock-tabs">
+            <button class="stock-tab active" data-tab="A">A股</button>
+            <button class="stock-tab" data-tab="HK">港股</button>
+            <button class="stock-tab" data-tab="US">美股</button>
+          </div>
+          <p class="stock-hint">按市场分类维护，编辑后点击保存才会生效。</p>
+          <div id="stockStatus" class="stock-status">正在加载股票配置...</div>
+          <div id="stockList" class="stock-list"></div>
+          <button id="saveStocksBtn" class="action-btn stock-save-btn">保存股票并刷新数据</button>
+        </section>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
